@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import BlogPost from "./pages/BlogPost";
 import Portfolio from "./pages/Portfolio";
 import Mood from "./pages/Mood";
+import Error404 from "./pages/Error404";
 
 export default function Router() {
     return (
@@ -13,7 +14,7 @@ export default function Router() {
                 <Route path="/post/:slug" element={<BlogPost />} />
                 <Route path="/portfolio" element={<Portfolio />} />
                 <Route path="/mood" element={<Mood />} />
-                <Route path="*" element={<>404</>} />
+                <Route path="*" element={<Error404 />} />
             </Route>
         </Routes>
     );
