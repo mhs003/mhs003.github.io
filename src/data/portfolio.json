@@ -1,0 +1,48 @@
+{
+    "email": "monzurulhasan1001@gmail.com",
+    "experiences": [
+        {
+            "role": "Backend Developer",
+            "company": "Microslop",
+            "from": "February 16, 2026",
+            "to": null,
+            "contribution": "Building reliable and efficient backend systems."
+        },
+        {
+            "role": "Full-Stack Developer",
+            "company": "Touch And Solve",
+            "from": "November 1, 2023",
+            "to": "February 15, 2026",
+            "contribution": "Developed scalable, high-performance full-stack applications."
+        }
+    ],
+    "skills": [
+        "GoLang", "Zig", "PHP/Laravel", "*SQL", "Docker", "Next.js"
+    ],
+    "projects": [
+        {
+            "name": "Harbrix",
+            "lang": "GoLang",
+            "description": "A lightweight user-isolated service supervisor for Linux. A pocked sized systemd.",
+            "url": "https://github.com/mhs003/harbrix"
+        },
+        {
+            "name": "Orvyn MVC",
+            "lang": "PHP",
+            "description": "A lightweight, zero dependency laravel like mvc, built as a POC.",
+            "url": "https://github.com/mhs003/orvyn-mvc"
+        },
+        {
+            "name": ".runner",
+            "lang": "GoLang",
+            "description": "A deterministic command orchestration tool.",
+            "url": "https://github.com/mhs003/runner"
+        },
+        {
+            "name": "CodeLive",
+            "lang": "Rust",
+            "description": "A simple code runner editor, which uses system binaries to run codes.",
+            "url": "https://github.com/mhs003/codelive"
+        }
+    ]
+}

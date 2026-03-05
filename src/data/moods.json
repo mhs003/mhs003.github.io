@@ -1,0 +1,32 @@
+[
+    {
+        "timestamp": "2026.03.05 09:48",
+        "content": "Love is a grave mental disease.",
+        "classes": "text-red-400"
+    },
+    {
+        "timestamp": "2026.03.01 08:39",
+        "content": "you cannot make someone love you, by loving them harder.",
+        "classes": "text-fuchsia-400"
+    },
+    {
+        "timestamp": "2025.12.16 22:45",
+        "content": "i choose to hold you in my dreams,\nfor in my dreams you have no end.",
+        "classes": "text-emerald"
+    },
+    {
+        "timestamp": "2025.07.12 11:12",
+        "content": "tracing silhouettes of you ...",
+        "classes": "text-main"
+    },
+    {
+        "timestamp": "2026.03.02 11:12",
+        "content": "Connection refused. Reason: Peer reset. Some things can't be debugged with a simple restart.",
+        "classes": "text-muted"
+    },
+    {
+        "timestamp": "2026.02.28 19:00",
+        "content": "THE SERVER IS DOWN AND SO AM I. EVERYTHING IS TEMPORARY EXCEPT THIS LATENCY.",
+        "classes": "text-main font-bold"
+    }
+]

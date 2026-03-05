@@ -1,0 +1,137 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+    /* Light theme - clean white with subtle emerald accents */
+    --bg: #fafafa;
+    --card: #ffffff;
+    --card-hover: #f4f4f5;
+    --border: #e4e4e7;
+    --border-hover: #d4d4d8;
+    --main: #18181b;
+    --main-hover: #09090b;
+    --muted: #71717a;
+    --muted-hover: #52525b;
+
+    /* Emerald accent colors - light theme */
+    --emerald: #059669;
+    --emerald-hover: #047857;
+    --emerald-subtle: #b4fad9;
+    --emerald-muted: #a7f3d0;
+
+    /* Grid and backgrounds */
+    --grid-opacity: 0.4;
+    --grid-color: #a1a1aa;
+}
+
+.dark {
+    /* Dark theme - deep zinc with emerald accents */
+    --bg: #030303;
+    --card: #09090b;
+    --card-hover: #18181b;
+    --border: #27272a;
+    --border-hover: #3f3f46;
+    --main: #f4f4f5;
+    --main-hover: #ffffff;
+    --muted: #52525b;
+    --muted-hover: #71717a;
+
+    /* Emerald accent colors - dark theme (brighter for contrast) */
+    --emerald: #34d399;
+    --emerald-hover: #6ee7b7;
+    --emerald-subtle: #033024;
+    --emerald-muted: #065f46;
+
+    /* Grid and backgrounds */
+    --grid-opacity: 0.4;
+    --grid-color: #3f3f46;
+}
+
+@theme inline {
+    --color-bg: var(--bg);
+    --color-card: var(--card);
+    --color-card-hover: var(--card-hover);
+    --color-border: var(--border);
+    --color-border-hover: var(--border-hover);
+    --color-main: var(--main);
+    --color-main-hover: var(--main-hover);
+    --color-muted: var(--muted);
+    --color-muted-hover: var(--muted-hover);
+    --color-emerald: var(--emerald);
+    --color-emerald-hover: var(--emerald-hover);
+    --color-emerald-subtle: var(--emerald-subtle);
+    --color-emerald-muted: var(--emerald-muted);
+    --grid-opacity: var(--grid-opacity);
+    --grid-color: var(--grid-color);
+}
+
+.mono {
+    font-family: "Geist Mono", monospace;
+}
+
+body {
+    font-family: "Geist", sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-main);
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+/* .grid-bg {
+    background-image: radial-gradient(
+        circle at 2px 2px,
+        var(--grid-color) 1px,
+        transparent 0
+    );
+    opacity: var(--grid-opacity);
+} */
+
+.grid-bg {
+    background-image: radial-gradient(
+        circle at 2px 2px,
+        var(--grid-color) 1px,
+        transparent 0
+    );
+    background-size: 32px 32px;
+    opacity: var(--grid-opacity);
+}
+
+@layer components {
+    code {
+        @apply font-mono text-sm tracking-tight;
+        @apply bg-zinc-100/70 dark:bg-zinc-800/70;
+        @apply text-emerald-600 dark:text-emerald-400;
+        @apply border border-zinc-200/50 dark:border-zinc-700/60;
+        @apply px-1.5 py-0.5 rounded-md;
+        @apply inline-block align-middle leading-normal;
+    }
+
+    p code,
+    li code,
+    h1 code,
+    h2 code,
+    h3 code {
+        @apply text-xs sm:text-sm;
+        @apply bg-zinc-100/80 dark:bg-zinc-800/50;
+        @apply text-emerald-600 dark:text-emerald-300/90;
+        @apply border border-zinc-200 dark:border-zinc-700;
+        @apply px-[0.35em] py-[0.15em];
+        @apply rounded;
+    }
+
+    pre {
+        @apply block;
+        @apply bg-card dark:bg-card/70 border border-border rounded overflow-x-auto p-4;
+        @apply text-emerald-600 dark:text-emerald-400;
+        @apply leading-relaxed tracking-wide;
+    }
+
+    .code-header {
+        @apply flex items-center justify-between;
+        @apply bg-zinc-900/90 dark:bg-zinc-950/80;
+        @apply px-4 py-2 text-xs text-zinc-400 border-b border-zinc-800;
+        @apply rounded-t-lg;
+    }
+}
