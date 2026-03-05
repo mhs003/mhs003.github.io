@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import { posts } from "../posts";
 
-export default function Home() {
+export default function Feeds() {
     return (
         <>
             <div className="mb-12">
@@ -9,7 +9,7 @@ export default function Home() {
                     Technical Dispatches
                 </h1>
                 <p className="mono text-xs text-muted uppercase tracking-widest">
-                    Latest strikes from the edge.
+                    Latest feeds from the edge.
                 </p>
             </div>
 

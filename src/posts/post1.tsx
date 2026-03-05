@@ -5,7 +5,7 @@ import PostFooter from "../components/post-footer";
 // eslint-disable-next-line react-refresh/only-export-components
 export const meta: PostMeta = {
     mins: 4,
-    date: "2026.03.06",
+    date: "2026.03.05",
     slug: "cloudflare-vite-nextjs-reimplementation",
     title: "Cloudflare's Vite-Powered Next.js Reimplementation",
     short_description:

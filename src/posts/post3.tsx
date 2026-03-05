@@ -5,7 +5,7 @@ import PostFooter from "../components/post-footer";
 // eslint-disable-next-line react-refresh/only-export-components
 export const meta: PostMeta = {
     mins: 5,
-    date: "2026.03.07",
+    date: "2026.03.06",
     slug: "why-go-lang-powers-the-best-deployment-infrastructure",
     title: "Why Go Powers the Best Deployment Infrastructure Systems in the World",
     short_description:

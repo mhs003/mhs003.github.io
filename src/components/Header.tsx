@@ -12,7 +12,7 @@ export default function Header() {
                 <div className="flex w-full md:w-auto justify-center items-center gap-6">
                     <ThemeToggle />
                     <NavLink
-                        to="/"
+                        to="/feed"
                         className={({ isActive }) =>
                             isActive
                                 ? "mono text-xs uppercase tracking-widest text-main border-b border-emerald"
@@ -20,6 +20,16 @@ export default function Header() {
                         }
                     >
                         Feed
+                    </NavLink>
+                    <NavLink
+                        to="/"
+                        className={({ isActive }) =>
+                            isActive
+                                ? "mono text-xs uppercase tracking-widest text-main border-b border-emerald"
+                                : "mono text-xs uppercase tracking-widest text-muted hover:text-muted-hover transition-colors"
+                        }
+                    >
+                        Portfolio
                     </NavLink>
                     <NavLink
                         to="/mood"
@@ -30,16 +40,6 @@ export default function Header() {
                         }
                     >
                         Mood
-                    </NavLink>
-                    <NavLink
-                        to="/portfolio"
-                        className={({ isActive }) =>
-                            isActive
-                                ? "mono text-xs uppercase tracking-widest text-main border-b border-emerald"
-                                : "mono text-xs uppercase tracking-widest text-muted hover:text-muted-hover transition-colors"
-                        }
-                    >
-                        Portfolio
                     </NavLink>
                     <a
                         href="https://github.com/mhs003"

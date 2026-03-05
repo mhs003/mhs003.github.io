@@ -49,8 +49,15 @@ export default function Portfolio() {
 
     return (
         <>
-            <section className="grid md:grid-cols-3 gap-8 items-start">
+            <section className="grid md:grid-cols-3 gap-8 items-center">
                 <div className="md:col-span-2 space-y-4">
+                    <div className="flex justify-start items-center gap-4 mb-8">
+                        <img className="w-20 rounded-full" src="https://avatars.githubusercontent.com/u/49614333?v=4" />
+                        <div className="flex flex-col justify-center items-start">
+                            <h2 className="text-xl font-bold">Monzurul Hasan</h2>
+                            <a href="https://github.com/mhs003" target="_blank" className="text-muted hover:underline font-semibold text-sm">@mhs003</a>
+                        </div>
+                    </div>
                     <h1 className="text-5xl font-bold tracking-tighter text-main">
                         Backend Programmer &{" "}
                         <span className="italic text-muted font-normal underline decoration-emerald/30">
@@ -68,7 +75,7 @@ export default function Portfolio() {
                 <div className="border border-border bg-card/50 p-6 space-y-4 relative overflow-hidden group">
                     <div className="flex items-center justify-between">
                         <span className="mono text-xs text-muted uppercase tracking-widest">
-                            Available?
+                            Available
                         </span>
                         <div className="h-2 w-2 bg-emerald rounded-full animate-pulse shadow-[0_0_8px_var(--color-emerald)]"></div>
                     </div>

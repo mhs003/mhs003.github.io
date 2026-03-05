@@ -5,7 +5,7 @@ import PostFooter from "../components/post-footer";
 // eslint-disable-next-line react-refresh/only-export-components
 export const meta: PostMeta = {
     mins: 5,
-    date: "2026.03.07",
+    date: "2026.03.05",
     slug: "why-tailwind-css-is-the-last-css-framework-you-need-to-learn",
     title: "Why Tailwind CSS Should Be the Last CSS Framework You Learn",
     short_description:
