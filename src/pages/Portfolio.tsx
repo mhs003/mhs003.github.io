@@ -68,7 +68,7 @@ export default function Portfolio() {
                 <div className="border border-border bg-card/50 p-6 space-y-4 relative overflow-hidden group">
                     <div className="flex items-center justify-between">
                         <span className="mono text-xs text-muted uppercase tracking-widest">
-                            Availability?
+                            Available?
                         </span>
                         <div className="h-2 w-2 bg-emerald rounded-full animate-pulse shadow-[0_0_8px_var(--color-emerald)]"></div>
                     </div>

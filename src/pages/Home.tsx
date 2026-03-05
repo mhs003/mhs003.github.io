@@ -37,7 +37,7 @@ export default function Home() {
                                     {post.meta.short_description}
                                 </p>
                             </div>
-                            <div className="mt-6 flex gap-3">
+                            <div className="mt-6 flex gap-3 flex-wrap">
                                 {post.meta.tags.map((t, i) => (
                                     <span
                                         key={i}

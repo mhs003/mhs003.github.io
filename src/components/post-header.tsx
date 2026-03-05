@@ -18,7 +18,7 @@ export default function PostHeader({ meta }: { meta: PostMeta }) {
                     {meta.title}
                 </h1>
 
-                <div className="flex gap-4">
+                <div className="flex gap-4 flex-wrap">
                     {meta.tags.map((t, i) => (
                         <span
                             key={i}
