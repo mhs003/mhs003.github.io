@@ -9,7 +9,10 @@ export default function Portfolio() {
     const [contributions, setContributions] = useState<Contribution[]>([]);
     const [weeks, setWeeks] = useState<Contribution[][]>([]);
 
-    const totalContributions = useMemo(() => contributions.reduce((p, c) => c.count + p, 0), [contributions]);
+    const totalContributions = useMemo(
+        () => contributions.reduce((p, c) => c.count + p, 0),
+        [contributions],
+    );
 
     const levelOpacity: number[] = [0.15, 0.35, 0.55, 0.75, 1];
 
@@ -22,7 +25,6 @@ export default function Portfolio() {
 
         return weeks;
     }
-
 
     useEffect(() => {
         const load = async () => {
@@ -52,10 +54,21 @@ export default function Portfolio() {
             <section className="grid md:grid-cols-3 gap-8 items-center">
                 <div className="md:col-span-2 space-y-4">
                     <div className="flex justify-start items-center gap-4 mb-8">
-                        <img className="w-20 rounded-full" src="https://avatars.githubusercontent.com/u/49614333?v=4" />
+                        <img
+                            className="w-20 rounded-full"
+                            src="https://avatars.githubusercontent.com/u/49614333?v=4"
+                        />
                         <div className="flex flex-col justify-center items-start">
-                            <h2 className="text-xl font-bold">Monzurul Hasan</h2>
-                            <a href="https://github.com/mhs003" target="_blank" className="text-muted hover:underline font-semibold text-sm">@mhs003</a>
+                            <h2 className="text-xl font-bold">
+                                Monzurul Hasan
+                            </h2>
+                            <a
+                                href="https://github.com/mhs003"
+                                target="_blank"
+                                className="text-muted hover:underline font-semibold text-sm"
+                            >
+                                @mhs003
+                            </a>
                         </div>
                     </div>
                     <h1 className="text-5xl font-bold tracking-tighter text-main">
@@ -102,7 +115,7 @@ export default function Portfolio() {
                                 className="border-l border-border pl-4 py-2 hover:border-emerald-muted transition-colors group"
                             >
                                 <span className="mono text-xs text-muted">
-                                    {getExprTime(ex.from)}{" "}—{" "}
+                                    {getExprTime(ex.from)} —{" "}
                                     {getExprTime(ex.to)}
                                 </span>
                                 <h4 className="font-bold text-sm text-main group-hover:text-emerald transition-colors">
@@ -121,19 +134,17 @@ export default function Portfolio() {
                         Skills
                     </h3>
                     <div className="grid grid-cols-2 gap-2">
-                        {portfolio.skills.map(
-                            (skill, i) => (
-                                <div
-                                    key={i}
-                                    className="bg-card border border-border p-3 flex justify-between items-center group hover:border-emerald-muted transition-all"
-                                >
-                                    <span className="mono text-xs text-main">
-                                        {skill}
-                                    </span>
-                                    <span className="w-1.5 h-1.5 bg-emerald rounded-full animate-pulse"></span>
-                                </div>
-                            ),
-                        )}
+                        {portfolio.skills.map((skill, i) => (
+                            <div
+                                key={i}
+                                className="bg-card border border-border p-3 flex justify-between items-center group hover:border-emerald-muted transition-all"
+                            >
+                                <span className="mono text-xs text-main">
+                                    {skill}
+                                </span>
+                                <span className="w-1.5 h-1.5 bg-emerald rounded-full animate-pulse"></span>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </section>
@@ -174,7 +185,13 @@ export default function Portfolio() {
                         target="_blank"
                         className="group flex gap-1 justify-center items-center bg-card/50 border border-border p-6 hover:border-emerald-muted transition-all relative overflow-hidden"
                     >
-                        <span className="relative text-muted group-hover:text-emerald transition-[right] right-0 group-hover:right-0.5">More on Github</span> <ArrowRight className="relative text-muted transition-[left] left-0 group-hover:left-0.5 group-hover:text-emerald" size={18} />
+                        <span className="relative text-muted group-hover:text-emerald transition-[right] right-0 group-hover:right-0.5">
+                            More on Github
+                        </span>{" "}
+                        <ArrowRight
+                            className="relative text-muted transition-[left] left-0 group-hover:left-0.5 group-hover:text-emerald"
+                            size={18}
+                        />
                     </a>
                 </div>
             </section>
@@ -195,33 +212,41 @@ export default function Portfolio() {
                             </span>
                         </div>
                     )}
-                    <div className="flex justify-center gap-1 overflow-x-auto pb-2 scrollbar-hide">
-                        {weeks.map((week, wi) => (
-                            <div key={wi} className="flex flex-col gap-1">
-                                {week.map((day, di) => (
+                    {!pulseLoading && (
+                        <>
+                            <div className="flex justify-center gap-1 overflow-x-auto pb-2 scrollbar-hide">
+                                {weeks.map((week, wi) => (
                                     <div
-                                        key={di}
-                                        className="h-3 w-3 bg-emerald-500 rounded-[1px]"
-                                        style={{
-                                            opacity: levelOpacity[day.level],
-                                        }}
-                                    />
+                                        key={wi}
+                                        className="flex flex-col gap-1"
+                                    >
+                                        {week.map((day, di) => (
+                                            <div
+                                                key={di}
+                                                className="h-3 w-3 bg-emerald-500 rounded-[1px]"
+                                                style={{
+                                                    opacity:
+                                                        levelOpacity[day.level],
+                                                }}
+                                            />
+                                        ))}
+                                    </div>
                                 ))}
                             </div>
-                        ))}
-                    </div>
-                    <div className="mt-4 flex justify-between items-center border-t border-border pt-4">
-                        <p className="mono text-xs text-muted">
-                            {totalContributions} commits in last year
-                        </p>
-                        <a
-                            target="_blank"
-                            href="https://github.com/mhs003"
-                            className="mono text-[11px] text-emerald hover:text-emerald-hover font-bold uppercase tracking-[0.2em] transition-colors"
-                        >
-                            VIEW PROFILE
-                        </a>
-                    </div>
+                            <div className="mt-4 flex justify-between items-center border-t border-border pt-4">
+                                <p className="mono text-xs text-muted">
+                                    {totalContributions} commits in last year
+                                </p>
+                                <a
+                                    target="_blank"
+                                    href="https://github.com/mhs003"
+                                    className="mono text-[11px] text-emerald hover:text-emerald-hover font-bold uppercase tracking-[0.2em] transition-colors"
+                                >
+                                    VIEW PROFILE
+                                </a>
+                            </div>
+                        </>
+                    )}
                 </div>
             </section>
         </>
