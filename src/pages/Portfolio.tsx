@@ -28,7 +28,7 @@ export default function Portfolio() {
         const load = async () => {
             setPulseLoading(true);
             const res = await fetch(
-                "https://github-user-contribution.platane.workers.dev/github-user-contribution/mhs003",
+                "https://mhs003-github-io-backend.semiware.workers.dev/pulses",
             );
 
             if (!res.ok) {
