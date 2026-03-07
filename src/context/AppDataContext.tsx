@@ -1,7 +1,7 @@
 import { createContext } from "react";
 import type { Mood } from "../types";
 
-type ApiMoodsType = Mood;
+type ApiMoodsType = Mood[];
 type ApiPulsesType = unknown;
 
 export type AppDataContextType = {

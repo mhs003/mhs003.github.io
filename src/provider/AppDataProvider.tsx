@@ -7,7 +7,7 @@ type Props = {
 };
 
 export function AppDataProvider({ children }: Props) {
-    const [apiMoods, setApiMoods] = useState<Mood | null>(null);
+    const [apiMoods, setApiMoods] = useState<Mood[] | null>(null);
     const [apiPulses, setApiPulses] = useState<unknown>(null);
     const [loading, setLoading] = useState(true);
 
