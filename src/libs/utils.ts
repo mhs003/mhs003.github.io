@@ -10,6 +10,16 @@ export function parseDate(dateStr: string) {
     return isNaN(parsed) ? null : new Date(parsed);
 }
 
+export function getDateTime(parsedDate: Date) {
+    let hours = parsedDate.getHours();
+    const period = hours >= 12 ? "PM" : "AM";
+    hours %= 12;
+    hours = hours ? hours : 12;
+    const min = parsedDate.getMinutes().toString().padStart(2, "0");
+    const secs = parsedDate.getSeconds().toString().padStart(2, "0");
+    return `${hours}:${min}:${secs} ${period}, ${parsedDate.toDateString()}`;
+}
+
 export function getMonth(parsedDate: Date, small = false) {
     const months = [
         "January",
@@ -37,4 +47,22 @@ export function getExprTime(dateStr: string | null) {
     const month = getMonth(parsed, true);
     const year = parsed.getFullYear();
     return `${date} ${month}, ${year}`;
+}
+
+export function cssStringToJsxStyle(css: string): Record<string, string> {
+    const style: Record<string, string> = {};
+
+    css.split(";").forEach((rule) => {
+        const [property, value] = rule.split(":");
+
+        if (!property || !value) return;
+
+        const camelKey = property
+            .trim()
+            .replace(/-([a-z])/g, (_, char) => char.toUpperCase());
+
+        style[camelKey] = value.trim();
+    });
+
+    return style;
 }

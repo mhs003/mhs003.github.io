@@ -1,6 +1,11 @@
-import moods from "../data/moods.json";
+import { useContext } from "react";
+import { AppDataContext } from "../context/AppDataContext";
+import { cssStringToJsxStyle, getDateTime, parseDate } from "../libs/utils";
+import type { Mood } from "../types";
 
 export default function Mood() {
+    const { apiMoods, loading } = useContext(AppDataContext);
+
     return (
         <>
             <div className="mb-12">
@@ -13,16 +18,29 @@ export default function Mood() {
             </div>
 
             <div className="space-y-12">
-                {moods.map((mood) => (
-                    <div key={mood.timestamp + mood.content} className="group relative">
+                {loading && (
+                    <div className="flex justify-center items-center py-4">
+                        <span className="relative flex size-4">
+                            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
+                            <span className="relative inline-flex size-4 rounded-full bg-emerald-500"></span>
+                        </span>
+                    </div>
+                )}
+                {apiMoods?.map((mood: Mood) => (
+                    <div key={mood.id} className="group relative">
                         <div className="flex items-center gap-4 mb-3">
                             <span className="mono text-[11px] text-muted opacity-50">
-                                {mood.timestamp}
+                                {getDateTime(parseDate(mood.createdAt)!)}
                             </span>
                         </div>
 
                         <div
-                            className={`text-xl md:text-2xl whitespace-pre-line tracking-tight leading-snug ${mood.classes} transition-all border-emerald`}
+                            className={`text-xl md:text-2xl whitespace-pre-line ${mood.classes} tracking-tight leading-snug transition-all border-emerald`}
+                            style={
+                                mood.styles
+                                    ? cssStringToJsxStyle(mood.styles)
+                                    : {}
+                            }
                         >
                             {mood.content}
                         </div>

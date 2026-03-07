@@ -1,16 +1,19 @@
-import { useEffect, useMemo, useState } from "react";
+import { useContext, useMemo } from "react";
 import type { Contribution } from "../types";
 import portfolio from "../data/portfolio.json";
 import { getExprTime } from "../libs/utils";
 import { ArrowRight } from "lucide-react";
+import { AppDataContext } from "../context/AppDataContext";
 
 export default function Portfolio() {
-    const [pulseLoading, setPulseLoading] = useState<boolean>(false);
-    const [contributions, setContributions] = useState<Contribution[]>([]);
-    const [weeks, setWeeks] = useState<Contribution[][]>([]);
+    const { apiPulses, loading } = useContext(AppDataContext);
+
+    const contributions = apiPulses as Contribution[];
+
+    const weeks = buildWeeks(contributions);
 
     const totalContributions = useMemo(
-        () => contributions.reduce((p, c) => c.count + p, 0),
+        () => contributions?.reduce((p, c) => p + c.count, 0),
         [contributions],
     );
 
@@ -19,35 +22,14 @@ export default function Portfolio() {
     function buildWeeks(contributions: Contribution[]): Contribution[][] {
         const weeks: Contribution[][] = [];
 
+        if (!contributions) return [];
+
         for (let i = 0; i < contributions.length; i += 7) {
             weeks.push(contributions.slice(i, i + 7));
         }
 
         return weeks;
     }
-
-    useEffect(() => {
-        const load = async () => {
-            setPulseLoading(true);
-            const res = await fetch(
-                "https://mhs003-github-io-backend.semiware.workers.dev/pulses",
-            );
-
-            if (!res.ok) {
-                setWeeks([]);
-                return;
-            }
-
-            const json: Contribution[] = await res.json();
-            setContributions(json);
-            const grouped = buildWeeks(json);
-
-            setWeeks(grouped);
-            setPulseLoading(false);
-        };
-
-        load();
-    }, []);
 
     return (
         <>
@@ -204,7 +186,7 @@ export default function Portfolio() {
                     <div className="h-px grow ml-6 bg-border opacity-50"></div>
                 </div>
                 <div className="bg-card/50 border border-border p-6 relative">
-                    {pulseLoading && (
+                    {loading && (
                         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 py-5 flex justify-center items-center">
                             <span className="relative flex size-4">
                                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
@@ -212,7 +194,7 @@ export default function Portfolio() {
                             </span>
                         </div>
                     )}
-                    {!pulseLoading && (
+                    {!loading && (
                         <>
                             <div className="flex justify-center gap-1 overflow-x-auto pb-2 scrollbar-hide">
                                 {weeks.map((week, wi) => (
